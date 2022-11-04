@@ -65,4 +65,4 @@ const  iniciarCompra = () => {
     }
 }
 
-// iniciarCompra()
+iniciarCompra()
