@@ -23,7 +23,7 @@
                         <a href="">Inicio</a>
                     </li>
                     <li>
-                        <a href="">Productos</a>
+                        <a href="#filter">Productos</a>
                     </li>
                     <li>
                         <a href="">Contacto</a>
@@ -32,11 +32,13 @@
             </div>
             <div class="extras-container">
                 <ul>
-                    <li>
+                    <li class="wishlistBtn">
                         <i class="fa-solid fa-heart"></i>
+                        <span class="wishlistQuantity">0</span>
                     </li>
-                    <li>
+                    <li class="cartBtn">
                         <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cartQuantity">0</span>
                     </li>
                 </ul>
             </div>
@@ -44,17 +46,27 @@
     </nav>
 
     <header>
+        <h2 class="titulo">Somos <br> <span class="typed word"></span></h2>
     </header>
 
-    <section class="filter-products">
-        <h1>Encuentra las mejores Zapatillas</h1>
+    <section class="filter-products" id="filter">
+        <h1>Encuentra las mejores Zapatillas del mercado</h1>
+        <input class="input" type="text" placeholder="Buscar...">
+        <div class="categories">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Nike</button>
+            <button class="filter-btn">Adidas</button>
+            <button class="filter-btn">Puma</button>
+            <button class="filter-btn">Converse</button>
+        </div>
     </section>
 
     <section class="all-products">
 
     </section>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
     <script src="js/index.js"></script>
+    <script src="js/efecto-escritura.js"></script>
 </body>
 </html>
