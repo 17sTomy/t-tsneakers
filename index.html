@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
+    <nav class="normal-nav">
         <div class="nav-content">
             <div class="logo-container">
                 <a href="index.html">
@@ -45,10 +45,65 @@
         </div>
     </nav>
 
+    <nav class="hamburger-nav">
+        <div class="nav-content">
+            <div class="btnContainer">
+                <button class="hamburgerBtn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="hamburger-menu">
+                <ul>
+                    <li>
+                        <a href="">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="#filter">Productos</a>
+                    </li>
+                    <li>
+                        <a href="">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo de la empresa">
+                </a>
+            </div>
+            <div class="extras-container">
+                <ul>
+                    <li class="">
+                        <i class="fa-solid fa-heart"></i>
+                        <span class="wishlistQuantity">0</span>
+                    </li>
+                    <li class="">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cartQuantity">0</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <i class="fa-solid fa-x openClose-sidebar"></i>
+        <div class="carrito-container">
+            <h3>CARRITO</h3>
+
+        </div>
+        <div class="btn-container">
+            <button class="buyBtn btn">Comprar</button>
+            <button class="emptyBtn btn">Vaciar Carrito</button>
+        </div>
+        <hr>
+        <div class="wishlist-container">
+            <h3>WISHLIST</h3>
+
+        </div>
+    </div>
+    
     <header>
         <h2 class="titulo">Somos <br> <span class="typed word"></span></h2>
     </header>
-
+    
     <section class="filter-products" id="filter">
         <h1>Encuentra las mejores Zapatillas del mercado</h1>
         <input class="input" type="text" placeholder="Buscar...">
@@ -68,5 +123,6 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
     <script src="js/index.js"></script>
     <script src="js/efecto-escritura.js"></script>
+    <script src="js/funcionalities.js"></script>
 </body>
 </html>

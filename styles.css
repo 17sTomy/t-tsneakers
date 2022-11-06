@@ -16,7 +16,7 @@
     --secondary-color: rgb(216, 216, 216);
     --main-color1-t: rgba(51, 241, 17, .9);
     --main-color2-t: rgba(16, 16, 16, .9);
-    --secondary-color-t: rgba(216, 216, 216, .9);
+    --secondary-color-t: rgb(216, 216, 216);
 }
 
 body{
@@ -29,6 +29,17 @@ nav{
     width: 100%;
     background-color: #33F111;
     box-shadow: -2px 5px 14px 3px rgba(0,0,0,0.75);
+}
+
+.hamburger-nav{
+    display: none;
+}
+
+.btn{
+    border-radius: 25px;
+    padding: 10px;
+    border: none;
+    outline: none;
 }
 
 .nav-content{
@@ -109,6 +120,7 @@ h1{
     padding: 40px;
     color: var(--secondary-color);
     font-weight: 400;
+    text-transform: uppercase;
 }
 
 .input{
@@ -118,8 +130,8 @@ h1{
     border: none;
     outline: none;
     text-align: center;
-    width: 40%;
-    background-color: rgb(20,20,20);
+    width: 400px;
+    background-color: rgb(22,22,22);
     cursor: pointer;
     color: var(--secondary-color);
     font-size: 1.2rem;
@@ -127,7 +139,7 @@ h1{
 }
 .input:focus{
     transform: scale(1.1);
-    background-color: rgb(30, 30, 30);
+    background-color: rgb(33, 33, 33);
 }
 
 button{
@@ -142,6 +154,7 @@ button{
     margin: 10px;
     font-size: 1rem;
     background-color: var(--secondary-color);
+    color: var(--main-color2);
 }
 .filter-btn:hover{
     transform: scale(1.1);
@@ -149,4 +162,165 @@ button{
 }
 .active{
     background-color: var(--main-color1);
+}
+
+.sidebar{
+    padding: 15px;
+    position: absolute;
+    transform: translateX(-100%);
+    height: 200vh; 
+    width: 50%;
+    z-index: 100;
+    background-color: rgba(20,20,20,.99);
+    transition: .2s;
+}
+.sidebar i{
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+.sidebar h3{
+    text-align: center;
+    padding-top: 20px;
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+}
+.sidebar button{
+    font-size: 1rem;
+    color: var(--main-color2);
+    margin: 10px 10px;
+}
+.emptyBtn{
+    background-color: rgb(223, 19, 19);
+}
+.buyBtn{
+    background-color: var(--main-color1);
+}
+.btn-container{
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+}
+hr{
+    background-color: var(--secondary-color);
+}
+.open-close-sidebar{
+    transform: translateX(0%);
+}
+
+
+/*RESPONSIVE*/
+.hamburger-nav{
+    display: flex;
+    z-index: 100;
+}
+.hamburger-menu{
+    position: absolute;
+    left: 0;
+    top: 115px;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-110%);
+    background-color: var(--main-color2-t);
+    transition: .2s;
+    z-index: 0;
+}
+.open-close-menu{
+    transform: translateX(0);
+}
+.hamburger-menu ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.hamburger-menu ul li{
+    padding: 15px;
+    cursor: pointer;
+}
+.hamburger-menu ul li a{
+    font-size: 1.2rem;
+    color: var(--secondary-color)
+}
+.hamburgerBtn{
+    background-color: var(--main-color1);
+    font-size: 1.5rem;
+}
+.btnContainer{
+    width: 30%;
+    text-align: center;
+}
+
+@media screen and (max-width: 480px){
+    .normal-nav{
+        display: none;
+    }
+    .hamburger-nav{
+        display: block;
+    }
+    .logo-container{
+        width: 70px;
+    }
+    .titulo{
+        font-size: 4rem;
+    }
+    .words{
+        font-size: 3.5rem;
+    }
+    .extras-container{
+        width: 32%;
+        display: flex;
+        justify-content: end;
+    }
+    .extras-container ul li i{
+        font-size: 1.3rem;
+    }
+    .nav-content{
+        width: 90%;
+        justify-content: space-between;
+    }
+    .hamburger-menu{
+        top: 95px;
+    }
+    .input{
+        width: 100%;
+    }
+    .sidebar{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 700px){
+    .normal-nav{
+        display: block;
+    }
+    .hamburger-nav{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 700px){
+    .nav-content{
+        width: 90%;
+    }
+    .btnContainer{
+        width: 20%;
+        left: 0;
+    }
+    .sidebar{
+        width: 80%;
+    }
+    .titulo{
+        font-size: 5rem;
+    }
+    .words{
+        font-size: 4.5rem;
+    }
 }
