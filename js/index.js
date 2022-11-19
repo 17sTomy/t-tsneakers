@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
     showProducts()
 })
 const PRODUCTOS = [],
-$productsSection = document.querySelector(".all-products"),
-$cartSection = document.querySelector(".cart"),
-$total = document.querySelector(".total")
+    $productsSection = document.querySelector(".all-products"),
+    $cartSection = document.querySelector(".cart"),
+    $total = document.querySelector(".total"),
+    $cartQuantity = document.querySelector(".cartQuantity")
 
 
 class Zapatilla {
@@ -59,13 +60,14 @@ const addToCartArray = (id) => {
         if(product.id === parseInt(id) && CARRITO.indexOf(product) === -1 && IDS.indexOf(product.id) === -1){
             CARRITO.push(product)
             IDS.push(product.id)
-            addToCart()
+            updateCart()
             updateTotal()
         }
     })
+    console.log(CARRITO);
 }
 
-const addToCart = () => {
+const updateCart = () => {
     $cartSection.innerHTML = ""
     CARRITO.forEach(product => {
         $cartSection.innerHTML += `
@@ -78,10 +80,18 @@ const addToCart = () => {
                 <span class="priceInCart">$${product.precio}</span>
                 <input id="${product.id}" onClick="updateTotal(event)" type="number" min="1" max="5" value="${product.cantidad}" class="cart-quantity">
             </div>
-                <i id="${product.id}" class="fa-solid fa-trash deleteBtn"></i>
+                <i id="${product.id}" onClick="deleteProductFromCart(${product.id})" class="fa-solid fa-trash deleteBtn"></i>
             </div>
         `
     })
+}
+
+const deleteProductFromCart = id => {
+    let index = IDS.indexOf(id)
+    IDS.splice(index, 1)
+    CARRITO.splice(index, 1)
+    updateTotal()
+    updateCart()
 }
 
 const updateTotal = e => {
@@ -103,6 +113,7 @@ const updateTotal = e => {
     })
     $total.textContent = `Total: $${totalCompra}` 
     saveProductsAndPrice()
+    $cartQuantity.textContent = CARRITO.length !== 0 ? CARRITO.map(producto => producto.cantidad).reduce((a, b) => a + b) : "0"
 }
 
 const saveProductsAndPrice = () => {
@@ -115,8 +126,9 @@ function getCart(){
     CARRITO = localStorage.getItem("carrito") === null ? CARRITO = [] : JSON.parse(localStorage.getItem("carrito"))
     IDS = localStorage.getItem("ids") === null ? IDS = [] : JSON.parse(localStorage.getItem("ids"))
     totalCompra = JSON.parse(localStorage.getItem("total"))
-    addToCart()
+    updateCart()
     updateTotal()
+    $cartQuantity.textContent = CARRITO.length !== 0 ? CARRITO.map(producto => producto.cantidad).reduce((a, b) => a + b) : "0"
 
 }
 
