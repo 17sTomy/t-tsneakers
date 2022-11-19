@@ -1,68 +1,122 @@
-let totalCompra = 0,
-    seguirComprando = true
-const CARRITO = []
-const PRODUCTOS = []
+let totalCompra = 0
+document.addEventListener("DOMContentLoaded", () => {
+    getCart()
+    showProducts()
+})
+const PRODUCTOS = [],
+$productsSection = document.querySelector(".all-products"),
+$cartSection = document.querySelector(".cart"),
+$total = document.querySelector(".total")
+
 
 class Zapatilla {
-    constructor(id, marca, modelo, precio, stock){
+    constructor(id, marca, modelo, precio, cantidad, URL, inCart, inWishlist){
         this.id = id;
         this.marca = marca;
         this.precio = precio;
         this.modelo = modelo;
-        this.stock = stock;
+        this.cantidad = cantidad;
+        this.URL = URL;
+        this.inCart = inCart;
+        this.inWishlist = inWishlist;
     }
 }
 
-const jordan = new Zapatilla(1, "Jordan", "Fly", 9999, 35)
-const nike = new Zapatilla(2, "Nike", "Air Max", 20000, 50)
-const adidas = new Zapatilla(3, "Adidas", "Yeezy", 49999, 10)
-const puma = new Zapatilla(4, "Puma", "Cave", 13000, 80)
-PRODUCTOS.push(jordan)
-PRODUCTOS.push(nike)
-PRODUCTOS.push(adidas)
-PRODUCTOS.push(puma)
-
-console.log(PRODUCTOS);
-
-const descuento = (cantidad, totalCompra) => {
-    let totalCompra2 = totalCompra
-    if (cantidad >= 2 && cantidad < 5){
-        let descuento = (totalCompra * 10) / 100
-        console.log(descuento);
-        totalCompra2 -= descuento
-    }else if (cantidad >= 5){
-        let descuento = (totalCompra * 20) / 100
-        console.log(descuento);
-        totalCompra2 -= descuento
-    }
-    console.log(totalCompra2);
-    return totalCompra2
+function showProducts(){
+    const jordan = new Zapatilla(1, "Jordan", "Fly", 9999, 1, "img/jordan1.jpg")
+    const nike = new Zapatilla(2, "Nike", "Air Max", 20000, 1, "img/nike1.jpg")
+    const adidas = new Zapatilla(3, "Adidas", "Yeezy", 49999, 1, "img/adidas1.webp")
+    const puma = new Zapatilla(4, "Puma", "Cave", 13000, 1, "img/puma1.jpg")
+    PRODUCTOS.push(jordan)
+    PRODUCTOS.push(nike)
+    PRODUCTOS.push(adidas)
+    PRODUCTOS.push(puma)
+    PRODUCTOS.forEach(product => {
+        $productsSection.innerHTML += `
+        <div class="card">
+                <div class="card-img">
+                    <img src=${product.URL} alt="">
+                </div>
+                <div class="card-info">
+                    <div class="name-container">
+                        <span class="name">${product.marca} ${product.modelo}</span>
+                    </div>
+                    <div class="price-container">
+                        <span class="price">$${product.precio}</span>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <i id="${product.id}" onClick="addToCartArray(${product.id})" class="fa-solid fa-cart-plus addToCartBtn"></i>
+                    <i id="${product.id}" class="fa-solid fa-heart-circle-plus addToWishBtn"></i>
+                </div>
+            </div>
+        `
+    })
 }
 
-const  iniciarCompra = () => {
-    while (seguirComprando) {
-        let producto = parseInt(prompt('Escoge el producto que deseas comprar: 1.Jordan - 2.Nike - 3.Adidas - 4.Puma'))
-        while (producto !== 1 && producto !== 2 && producto !== 3 && producto !== 4){
-            producto = parseInt(prompt('Escoge el producto que deseas comprar: 1.Jordan - 2.Nike - 3.Adidas - 4.Puma'))
+const addToCartArray = (id) => {
+    PRODUCTOS.forEach(product => {
+        if(product.id === parseInt(id) && CARRITO.indexOf(product) === -1 && IDS.indexOf(product.id) === -1){
+            CARRITO.push(product)
+            IDS.push(product.id)
+            addToCart()
+            updateTotal()
         }
-        CARRITO.push(PRODUCTOS[producto - 1])
-        let seguir = parseInt(prompt('¿Desea seguir comprando?: 1.SI - 2.NO'))
-        while (seguir !== 1 && seguir !== 2){
-            seguir = parseInt(prompt('¿Desea seguir comprando?: 1.SI - 2.NO'))
-        }
-        if (seguir === 2) {
-            seguirComprando = false
-        }
-    }
-    console.log(CARRITO);
-
-    totalCompra = CARRITO.map(producto => producto.precio).reduce((a, b) => a + b)
-    console.log(totalCompra);
-    alert(`El total de su compra es de $${totalCompra}`)
-    if(CARRITO.length > 1){
-        let discount = descuento(CARRITO.length, totalCompra)
-        alert(`Con el descuento aplicado, termina pagando: $${discount}`)
-    }
+    })
 }
 
-iniciarCompra()
+const addToCart = () => {
+    $cartSection.innerHTML = ""
+    CARRITO.forEach(product => {
+        $cartSection.innerHTML += `
+        <div class="cardInCart">
+            <div class="container-img">
+                <img src=${product.URL} alt="">
+            </div>
+            <div class="info">
+                <span class="nameInCart">${product.marca} ${product.modelo}</span>
+                <span class="priceInCart">$${product.precio}</span>
+                <input id="${product.id}" onClick="updateTotal(event)" type="number" min="1" max="5" value="${product.cantidad}" class="cart-quantity">
+            </div>
+                <i id="${product.id}" class="fa-solid fa-trash deleteBtn"></i>
+            </div>
+        `
+    })
+}
+
+const updateTotal = e => {
+    if(e){
+        let id = parseInt(e.target.id),
+            quantity = parseInt(e.target.value)
+        CARRITO.forEach(product => {
+            if (product.id === id) {
+                product.cantidad = quantity 
+            }else{
+                e.target.value = quantity
+            } 
+                
+        })
+    }
+    totalCompra = 0
+    CARRITO.forEach(product => {
+        totalCompra += product.precio * product.cantidad
+    })
+    $total.textContent = `Total: $${totalCompra}` 
+    saveProductsAndPrice()
+}
+
+const saveProductsAndPrice = () => {
+    localStorage.setItem("carrito", JSON.stringify(CARRITO))
+    localStorage.setItem("total", JSON.stringify(totalCompra))
+    localStorage.setItem("ids", JSON.stringify(IDS))
+}
+
+function getCart(){
+    CARRITO = localStorage.getItem("carrito") === null ? CARRITO = [] : JSON.parse(localStorage.getItem("carrito"))
+    IDS = localStorage.getItem("ids") === null ? IDS = [] : JSON.parse(localStorage.getItem("ids"))
+    totalCompra = JSON.parse(localStorage.getItem("total"))
+    addToCart()
+    updateTotal()
+
+}
+

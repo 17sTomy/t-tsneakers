@@ -11,6 +11,13 @@ $btnHamburger.onclick = () => {
 const filterProducts = (e) => {
     $filterBtn.forEach(btn => btn.classList.remove("active"))
     e.target.classList.add("active")
+    let category = e.target.textContent.toLowerCase()
+    //Y CON UN FETCH TRAES LOS PRODUCTOS QUE TIENEN ESA MARCA
+    if (category === "all"){
+        console.log("todas");
+    }else{
+        console.log(category);
+    }
 }
 
 $filterBtn.forEach(btn => {
@@ -26,3 +33,5 @@ document.onclick = (e) => {
         $sidebar.classList.remove("open-close-sidebar")
     }
 }
+
+/*cuando agrego el producto, cambio el icono del boton para que se pueda sacar (lo mismo de la wishlist)*/
