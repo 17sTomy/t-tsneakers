@@ -226,6 +226,9 @@ hr{
     text-align: center;
     color: var(--secondary-color);
 }
+h3{
+    margin-bottom: 10px;
+}
 .cardInCart{
     padding-top: 20px;
     width: 100%;
@@ -367,8 +370,12 @@ hr{
     color: var(--secondary-color)
 }
 .hamburgerBtn{
-    background-color: var(--main-color1);
+    background-color: transparent;
     font-size: 1.5rem;
+    padding: 10px;
+}
+.hamburgerBtn i{
+    color: var(--main-color2);
 }
 .btnContainer{
     width: 30%;
@@ -458,6 +465,9 @@ footer{
 }
 
 @media screen and (min-width: 481px) and (max-width: 700px){
+    .normal-nav{
+        display: none;
+    }
     .nav-content{
         width: 90%;
     }

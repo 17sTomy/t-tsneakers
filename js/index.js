@@ -7,8 +7,7 @@ const PRODUCTOS = [],
     $productsSection = document.querySelector(".all-products"),
     $cartSection = document.querySelector(".cart"),
     $total = document.querySelector(".total"),
-    $cartQuantity = document.querySelector(".cartQuantity")
-
+    $cartQuantity = document.querySelectorAll(".cartQuantity")
 
 class Zapatilla {
     constructor(id, marca, modelo, precio, cantidad, URL, inCart, inWishlist){
@@ -78,7 +77,7 @@ const updateCart = () => {
             <div class="info">
                 <span class="nameInCart">${product.marca} ${product.modelo}</span>
                 <span class="priceInCart">$${product.precio}</span>
-                <input id="${product.id}" onClick="updateTotal(event)" type="number" min="1" max="5" value="${product.cantidad}" class="cart-quantity">
+                <input id="${product.id}" onChange="updateTotal(event)" type="number" min="1" max="5" value="${product.cantidad}" class="cart-quantity">
             </div>
                 <i id="${product.id}" onClick="deleteProductFromCart(${product.id})" class="fa-solid fa-trash deleteBtn"></i>
             </div>
@@ -113,7 +112,9 @@ const updateTotal = e => {
     })
     $total.textContent = `Total: $${totalCompra}` 
     saveProductsAndPrice()
-    $cartQuantity.textContent = CARRITO.length !== 0 ? CARRITO.map(producto => producto.cantidad).reduce((a, b) => a + b) : "0"
+    $cartQuantity.forEach(span => {
+        span.textContent = CARRITO.length !== 0 ? CARRITO.map(producto => producto.cantidad).reduce((a, b) => a + b) : "0"
+    })
 }
 
 const saveProductsAndPrice = () => {
