@@ -130,6 +130,5 @@ function getCart(){
     updateCart()
     updateTotal()
     $cartQuantity.textContent = CARRITO.length !== 0 ? CARRITO.map(producto => producto.cantidad).reduce((a, b) => a + b) : "0"
-
 }
 

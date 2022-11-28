@@ -330,6 +330,11 @@ h3{
     margin-left: 5px;
 }
 
+.filter{
+    visibility: hidden;
+    opacity: 0;
+    order: 1;
+}
 
 /*RESPONSIVE*/
 .hamburger-nav{
