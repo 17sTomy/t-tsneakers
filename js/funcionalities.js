@@ -31,7 +31,7 @@ document.onclick = (e) => {
 }
 
 $inputSearch.onkeyup = (e) => {
-    let buscado = e.target.value
+    let buscado = e.target.value.toLowerCase()
     filter(buscado)
 }
 

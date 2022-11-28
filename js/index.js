@@ -10,15 +10,13 @@ const PRODUCTOS = [],
     $cartQuantity = document.querySelectorAll(".cartQuantity")
 
 class Zapatilla {
-    constructor(id, marca, modelo, precio, cantidad, URL, inCart, inWishlist){
+    constructor(id, marca, modelo, precio, cantidad, URL){
         this.id = id;
         this.marca = marca;
         this.precio = precio;
         this.modelo = modelo;
         this.cantidad = cantidad;
         this.URL = URL;
-        this.inCart = inCart;
-        this.inWishlist = inWishlist;
     }
 }
 
@@ -63,7 +61,6 @@ const addToCartArray = (id) => {
             updateTotal()
         }
     })
-    console.log(CARRITO);
 }
 
 const updateCart = () => {
