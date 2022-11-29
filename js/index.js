@@ -8,10 +8,13 @@ const PRODUCTOS = [],
     $cartSection = document.querySelector(".cart"),
     $total = document.querySelector(".total"),
     $cartQuantity = document.querySelectorAll(".cartQuantity"),
-    $filterBtn = Array.from(document.querySelectorAll(".filter-btn"))
+    $filterBtn = Array.from(document.querySelectorAll(".filter-btn")),
+    $buyBtn = document.querySelector(".buyBtn"),
+    $vaciarBtn = document.querySelector(".emptyBtn")
 
 const showProducts = products => {
     $productsSection.innerHTML = ""
+    PRODUCTOS.length = 0
     products.forEach(product => {
         PRODUCTOS.push(product)
         const {id, marca, modelo, precio, cantidad, imagen} = product
@@ -29,13 +32,14 @@ const showProducts = products => {
                     </div>
                 </div>
                 <div class="card-action">
-                    <i id="${id}" onClick="addToCartArray(${id})" class="fa-solid fa-cart-plus addToCartBtn"></i>
-                    <i id="${id}" class="fa-solid fa-heart-circle-plus addToWishBtn"></i>
-                </div>
-            </div>
-        `
-    })
-}
+                <button id="${id}" onClick="addToCartArray(${id})"  class="addToCartBtn icon-btn add-btn">
+                    <div class="add-icon"></div>
+                    <div class="btn-txt"><i class="fa-solid fa-cart-plus addToCartBtn"></i></div>
+                </button>
+                    
+            `
+        })
+    }
 
 async function showAllProducts(){
     const productosFetch = await fetch("productos.json")
@@ -62,14 +66,19 @@ $filterBtn.forEach(btn => {
 })
 
 const addToCartArray = (id) => {
-    PRODUCTOS.forEach(product => {
-        if(product.id === parseInt(id) && CARRITO.indexOf(product) === -1 && IDS.indexOf(product.id) === -1){
-            CARRITO.push(product)
-            IDS.push(product.id)
-            updateCart()
-            updateTotal()
-        }
-    })
+    if (IDS.indexOf(id) !== -1){
+        throwAlert("El producto ya se ecuentra en el carrito", "Puedes cambiar la cantidad desde ahí.", "warning")
+    }else{
+        PRODUCTOS.forEach(product => {
+            if(product.id === parseInt(id) && CARRITO.indexOf(product) === -1 && IDS.indexOf(product.id) === -1){
+                CARRITO.push(product)
+                IDS.push(product.id)
+                updateCart()
+                updateTotal()
+                throwAlert("Producto agregado al carrito!", "", "success")
+            }
+        })
+    }
 }
 
 const updateCart = () => {
@@ -99,6 +108,7 @@ const deleteProductFromCart = id => {
     updateTotal()
     updateCart()
 }
+
 
 const updateTotal = e => {
     if(e){
@@ -139,3 +149,36 @@ function getCart(){
     $cartQuantity.textContent = CARRITO.length !== 0 ? CARRITO.map(producto => producto.cantidad).reduce((a, b) => a + b) : "0"
 }
 
+$buyBtn.onclick = () => {
+    if (CARRITO.length > 0){
+        throwAlert("Tu compra ha sido realizada!", "Gracias por confiar en nosotros.", "success")
+        totalCompra = 0
+        CARRITO = []
+        IDS = []
+        updateCart()
+        updateTotal()
+    }else{
+        throwAlert("El carrito se encuentra vacío.", "Agrega productos para poder comprar.", "error")
+    }
+}
+
+$vaciarBtn.onclick = () => {
+    if (CARRITO.length > 0){
+        throwAlert("Carrito vacío!", "", "success")
+        totalCompra = 0
+        CARRITO = []
+        IDS = []
+        updateCart()
+        updateTotal()
+    }else{
+        throwAlert("El carrito ya se encuentra vacío.", "", "error")
+    }
+}
+
+function throwAlert(primaryMessage, secondaryMessage, type){
+    Swal.fire(
+        `${primaryMessage}`,
+        `${secondaryMessage}`,
+        `${type}`
+    ) 
+}

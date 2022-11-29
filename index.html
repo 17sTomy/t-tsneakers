@@ -20,7 +20,7 @@
             <div class="links-container">
                 <ul>
                     <li>
-                        <a href="">Inicio</a>
+                        <a href="#home">Inicio</a>
                     </li>
                     <li>
                         <a href="#filter">Productos</a>
@@ -32,10 +32,6 @@
             </div>
             <div class="extras-container">
                 <ul>
-                    <li class="wishlistBtn">
-                        <i class="fa-solid fa-heart"></i>
-                        <span class="wishlistQuantity">0</span>
-                    </li>
                     <li class="cartBtn">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="cartQuantity">0</span>
@@ -53,7 +49,7 @@
             <div class="hamburger-menu">
                 <ul>
                     <li>
-                        <a href="">Inicio</a>
+                        <a href="#home">Inicio</a>
                     </li>
                     <li>
                         <a href="#filter">Productos</a>
@@ -70,11 +66,7 @@
             </div>
             <div class="extras-container">
                 <ul>
-                    <li class="">
-                        <i class="fa-solid fa-heart"></i>
-                        <span class="wishlistQuantity">0</span>
-                    </li>
-                    <li class="">
+                    <li>
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="cartQuantity">0</span>
                     </li>
@@ -91,26 +83,12 @@
                 <div class="cart"></div> 
             </div>
             <div class="btn-container">
-                <button class="buyBtn btn">Comprar</button>
-                <button class="emptyBtn btn">Vaciar Carrito</button>
-            </div>
-            <hr>
-            <div class="wishlist-container">
-                <h3>WISHLIST</h3>
-                <div class="cardInCart">
-                    <div class="container-img">
-                        <img src="img/nike1.jpg" alt="">
-                    </div>
-                    <div class="info">
-                        <span class="nameInCart">Nike Air Max</span>
-                        <span class="priceInCart">$9999.99</span>
-                        <i class="fa-solid fa-heart-circle-minus"></i>
-                    </div>
-                </div>
+                <button class="buyBtn btnAnimation">Comprar</button>
+                <button class="emptyBtn btnAnimation">Vaciar carrito</button>
             </div>
     </div>
     
-    <header>
+    <header id="home">
         <h2 class="titulo">Somos <br> <span class="typed word"></span></h2>
     </header>
     
@@ -148,8 +126,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-    <script src="js/index.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/efecto-escritura.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/funcionalities.js"></script>
 </body>
 </html>
