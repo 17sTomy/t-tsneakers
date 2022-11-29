@@ -1,56 +1,65 @@
 let totalCompra = 0
 document.addEventListener("DOMContentLoaded", () => {
     getCart()
-    showProducts()
+    showAllProducts()
 })
 const PRODUCTOS = [],
     $productsSection = document.querySelector(".all-products"),
     $cartSection = document.querySelector(".cart"),
     $total = document.querySelector(".total"),
-    $cartQuantity = document.querySelectorAll(".cartQuantity")
+    $cartQuantity = document.querySelectorAll(".cartQuantity"),
+    $filterBtn = Array.from(document.querySelectorAll(".filter-btn"))
 
-class Zapatilla {
-    constructor(id, marca, modelo, precio, cantidad, URL){
-        this.id = id;
-        this.marca = marca;
-        this.precio = precio;
-        this.modelo = modelo;
-        this.cantidad = cantidad;
-        this.URL = URL;
-    }
-}
-
-function showProducts(){
-    const jordan = new Zapatilla(1, "Jordan", "Fly", 9999, 1, "img/jordan1.jpg")
-    const nike = new Zapatilla(2, "Nike", "Air Max", 20000, 1, "img/nike1.jpg")
-    const adidas = new Zapatilla(3, "Adidas", "Yeezy", 49999, 1, "img/adidas1.webp")
-    const puma = new Zapatilla(4, "Puma", "Cave", 13000, 1, "img/puma1.jpg")
-    PRODUCTOS.push(jordan)
-    PRODUCTOS.push(nike)
-    PRODUCTOS.push(adidas)
-    PRODUCTOS.push(puma)
-    PRODUCTOS.forEach(product => {
+const showProducts = products => {
+    $productsSection.innerHTML = ""
+    products.forEach(product => {
+        PRODUCTOS.push(product)
+        const {id, marca, modelo, precio, cantidad, imagen} = product
         $productsSection.innerHTML += `
         <div class="card">
                 <div class="card-img">
-                    <img src=${product.URL} alt="">
+                    <img src=${imagen} alt="">
                 </div>
                 <div class="card-info">
                     <div class="name-container">
-                        <span class="name">${product.marca} ${product.modelo}</span>
+                        <span class="name">${marca} ${modelo}</span>
                     </div>
                     <div class="price-container">
-                        <span class="price">$${product.precio}</span>
+                        <span class="price">$${precio}</span>
                     </div>
                 </div>
                 <div class="card-action">
-                    <i id="${product.id}" onClick="addToCartArray(${product.id})" class="fa-solid fa-cart-plus addToCartBtn"></i>
-                    <i id="${product.id}" class="fa-solid fa-heart-circle-plus addToWishBtn"></i>
+                    <i id="${id}" onClick="addToCartArray(${id})" class="fa-solid fa-cart-plus addToCartBtn"></i>
+                    <i id="${id}" class="fa-solid fa-heart-circle-plus addToWishBtn"></i>
                 </div>
             </div>
         `
     })
 }
+
+async function showAllProducts(){
+    const productosFetch = await fetch("productos.json")
+    const productosJson = await productosFetch.json()
+    showProducts(productosJson)
+}
+
+const filterProducts = async (e) => {
+    let marcaElegida = e.target.textContent
+    $filterBtn.forEach(btn => btn.classList.remove("active"))
+    e.target.classList.add("active")
+    if (marcaElegida === "All"){
+        showAllProducts()
+    }else{
+        const productosFetch = await fetch("productos.json")
+        const productosJson = await productosFetch.json()
+        const productosFiltrados = productosJson.filter(product => product.marca === marcaElegida)
+        showProducts(productosFiltrados)
+    }
+}
+
+$filterBtn.forEach(btn => {
+    btn.onclick = (e) => filterProducts(e)
+})
 
 const addToCartArray = (id) => {
     PRODUCTOS.forEach(product => {
@@ -66,17 +75,18 @@ const addToCartArray = (id) => {
 const updateCart = () => {
     $cartSection.innerHTML = ""
     CARRITO.forEach(product => {
+        const {id, marca, modelo, precio, cantidad, imagen} = product
         $cartSection.innerHTML += `
         <div class="cardInCart">
             <div class="container-img">
-                <img src=${product.URL} alt="">
+                <img src=${imagen} alt="">
             </div>
             <div class="info">
-                <span class="nameInCart">${product.marca} ${product.modelo}</span>
-                <span class="priceInCart">$${product.precio}</span>
-                <input id="${product.id}" onChange="updateTotal(event)" type="number" min="1" max="5" value="${product.cantidad}" class="cart-quantity">
+                <span class="nameInCart">${marca} ${modelo}</span>
+                <span class="priceInCart">$${precio}</span>
+                <input id="${id}" onChange="updateTotal(event)" type="number" min="1" max="5" value="${cantidad}" class="cart-quantity">
             </div>
-                <i id="${product.id}" onClick="deleteProductFromCart(${product.id})" class="fa-solid fa-trash deleteBtn"></i>
+                <i id="${id}" onClick="deleteProductFromCart(${id})" class="fa-solid fa-trash deleteBtn"></i>
             </div>
         `
     })

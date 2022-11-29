@@ -2,23 +2,11 @@ const $btnHamburger = document.getElementById("hamburgerBtn"),
     $btnSidebar = document.querySelector(".openClose-sidebar"),
     $sidebar = document.querySelector(".sidebar"),
     $menu = document.querySelector(".hamburger-menu"),
-    $filterBtn = Array.from(document.querySelectorAll(".filter-btn")),
     $inputSearch = document.querySelector("#buscador")
 
 $btnHamburger.onclick = () => {
     $menu.classList.toggle("open-close-menu");
 }
-
-const filterProducts = (e) => {
-    let category = e.target.textContent.toLowerCase()
-    $filterBtn.forEach(btn => btn.classList.remove("active"))
-    e.target.classList.add("active")
-    category === "all" ? filter("") : filter(category)
-}
-
-$filterBtn.forEach(btn => {
-    btn.onclick = (e) => filterProducts(e)
-})
 
 document.onclick = (e) => {
     if (e.target.matches(".fa-cart-shopping") || e.target.matches(".fa-heart")){
@@ -42,5 +30,3 @@ function filter(buscado){
         : card.classList.add("filter")
     })
 }
-
-/*cuando agrego el producto, cambio el icono del boton para que se pueda sacar (lo mismo de la wishlist)*/

@@ -1,0 +1,322 @@
+[
+    {
+        "id": 1,
+        "marca": "Nike",
+        "modelo": "Air Zoom Pegasus Gris",
+        "precio": 32999,
+        "cantidad": 1,
+        "imagen": "img/nike1.jpg"
+    },
+    {
+        "id": 2,
+        "marca": "Nike",
+        "modelo": "Air Zoom Pegasus Azul",
+        "precio": 46999,
+        "cantidad": 1,
+        "imagen": "img/nike2.jpg"
+    },
+    {
+        "id": 3,
+        "marca": "Nike",
+        "modelo": "Air Zoom Pegasus Negra",
+        "precio": 45999,
+        "cantidad": 1,
+        "imagen": "img/nike3.jpg"
+    },
+    {
+        "id": 4,
+        "marca": "Nike",
+        "modelo": "Air Zoom Vomero Gris",
+        "precio": 39999,
+        "cantidad": 1,
+        "imagen": "img/nike4.jpg"
+    },
+    {
+        "id": 5,
+        "marca": "Nike",
+        "modelo": "Air Zoom Vomero Negra",
+        "precio": 43899,
+        "cantidad": 1,
+        "imagen": "img/nike5.jpg"
+    },
+    {
+        "id": 6,
+        "marca": "Nike",
+        "modelo": "Air Zoom Vomero Azul",
+        "precio": 51299,
+        "cantidad": 1,
+        "imagen": "img/nike6.jpg"
+    },
+    {
+        "id": 7,
+        "marca": "Nike",
+        "modelo": "React Miler Negra",
+        "precio": 35999,
+        "cantidad": 1,
+        "imagen": "img/nike7.jpg"
+    },
+    {
+        "id": 8,
+        "marca": "Nike",
+        "modelo": "Air Max Excee Gris",
+        "precio": 41999,
+        "cantidad": 1,
+        "imagen": "img/nike8.jpg"
+    },
+    {
+        "id": 9,
+        "marca": "Nike",
+        "modelo": "Zoom Winflow Azul",
+        "precio": 62999,
+        "cantidad": 1,
+        "imagen": "img/nike9.jpg"
+    },
+    {
+        "id": 10,
+        "marca": "Nike",
+        "modelo": "Reactive Miler Gris",
+        "precio": 38999,
+        "cantidad": 1,
+        "imagen": "img/nike10.jpg"
+    },
+    {
+        "id": 11,
+        "marca": "Adidas",
+        "modelo": "Running Solarglide 5",
+        "precio": 56999,
+        "cantidad": 1,
+        "imagen": "img/adidas1.jpg"
+    },
+    {
+        "id": 12,
+        "marca": "Adidas",
+        "modelo": "Trekking Terrex Verde",
+        "precio": 49999,
+        "cantidad": 1,
+        "imagen": "img/adidas2.jpg"
+    },
+    {
+        "id": 13,
+        "marca": "Adidas",
+        "modelo": "Running Ultraboost 22 Violeta",
+        "precio": 34699,
+        "cantidad": 1,
+        "imagen": "img/adidas3.jpg"
+    },
+    {
+        "id": 14,
+        "marca": "Adidas",
+        "modelo": "Running Ultraboost 22 Naranja",
+        "precio": 29899,
+        "cantidad": 1,
+        "imagen": "img/adidas4.jpg"
+    },
+    {
+        "id": 15,
+        "marca": "Adidas",
+        "modelo": "Running Ultraboost 20 Azul",
+        "precio": 39799,
+        "cantidad": 1,
+        "imagen": "img/adidas5.jpg"
+    },
+    {
+        "id": 16,
+        "marca": "Adidas",
+        "modelo": "Running Ultraboost 21 Cold",
+        "precio": 45999,
+        "cantidad": 1,
+        "imagen": "img/adidas6.jpg"
+    },
+    {
+        "id": 17,
+        "marca": "Adidas",
+        "modelo": "Running Primeblue 21 Azul",
+        "precio": 44199,
+        "cantidad": 1,
+        "imagen": "img/adidas7.jpg"
+    },
+    {
+        "id": 18,
+        "marca": "Adidas",
+        "modelo": "Running Supernova Blanca",
+        "precio": 36499,
+        "cantidad": 1,
+        "imagen": "img/adidas8.jpg"
+    },
+    {
+        "id": 19,
+        "marca": "Adidas",
+        "modelo": "Running Galaxy 2 Negra",
+        "precio": 28599,
+        "cantidad": 1,
+        "imagen": "img/adidas9.jpg"
+    },
+    {
+        "id": 20,
+        "marca": "Adidas",
+        "modelo": "Running Solarglide 5 Blanca",
+        "precio": 43599,
+        "cantidad": 1,
+        "imagen": "img/adidas10.jpg"
+    },
+    {
+        "id": 21,
+        "marca": "Puma",
+        "modelo": "Botines Future 3.4",
+        "precio": 27999,
+        "cantidad": 1,
+        "imagen": "img/puma1.jpg"
+    },
+    {
+        "id": 22,
+        "marca": "Puma",
+        "modelo": "X-RAY 2 Square Verde",
+        "precio": 27499,
+        "cantidad": 1,
+        "imagen": "img/puma2.jpg"
+    },
+    {
+        "id": 23,
+        "marca": "Puma",
+        "modelo": "X-RAY 2 Square Mujer Gris",
+        "precio": 27499,
+        "cantidad": 1,
+        "imagen": "img/puma3.jpg"
+    },
+    {
+        "id": 24,
+        "marca": "Puma",
+        "modelo": "Running Comet 2 Alt Beta",
+        "precio": 16499,
+        "cantidad": 1,
+        "imagen": "img/puma4.jpg"
+    },
+    {
+        "id": 25,
+        "marca": "Puma",
+        "modelo": "Running Cell Vive Elevate Gris",
+        "precio": 25299,
+        "cantidad": 1,
+        "imagen": "img/puma5.jpg"
+    },
+    {
+        "id": 26,
+        "marca": "Puma",
+        "modelo": "Running Comet 2 Alt Velcro",
+        "precio": 16499,
+        "cantidad": 1,
+        "imagen": "img/puma6.jpg"
+    },
+    {
+        "id": 27,
+        "marca": "Puma",
+        "modelo": "X-RAY 2 Speed Blanca",
+        "precio": 25299,
+        "cantidad": 1,
+        "imagen": "img/puma7.jpg"
+    },
+    {
+        "id": 28,
+        "marca": "Puma",
+        "modelo": "X-RAY 2 Square Gris",
+        "precio": 19999,
+        "cantidad": 1,
+        "imagen": "img/puma8.jpg"
+    },
+    {
+        "id": 29,
+        "marca": "Puma",
+        "modelo": "Running Cell Vive Rosa",
+        "precio": 25299,
+        "cantidad": 1,
+        "imagen": "img/puma9.jpg"
+    },
+    {
+        "id": 30,
+        "marca": "Puma",
+        "modelo": "Running Deviate Nitro 2 Naranja",
+        "precio": 50599,
+        "cantidad": 1,
+        "imagen": "img/puma10.jpg"
+    },
+    {
+        "id": 31,
+        "marca": "Asics",
+        "modelo": "Voley Netburner",
+        "precio": 26440,
+        "cantidad": 1,
+        "imagen": "img/asics1.jpg"
+    },
+    {
+        "id": 32,
+        "marca": "Asics",
+        "modelo": "Tenis Gel-Back-Hand",
+        "precio": 19540,
+        "cantidad": 1,
+        "imagen": "img/asics2.jpg"
+    },
+    {
+        "id": 33,
+        "marca": "Asics",
+        "modelo": "Running Gel-NA-Goya 4",
+        "precio": 28890,
+        "cantidad": 1,
+        "imagen": "img/asics3.jpg"
+    },
+    {
+        "id": 34,
+        "marca": "Asics",
+        "modelo": "Running Patriot 12",
+        "precio": 26440,
+        "cantidad": 1,
+        "imagen": "img/asics4.jpg"
+    },
+    {
+        "id": 35,
+        "marca": "Asics",
+        "modelo": "Running Gel-IM-Pression 10",
+        "precio": 29890,
+        "cantidad": 1,
+        "imagen": "img/asics5.jpg"
+    },
+    {
+        "id": 36,
+        "marca": "Asics",
+        "modelo": "Running Taikai",
+        "precio": 19540,
+        "cantidad": 1,
+        "imagen": "img/asics6.jpg"
+    },
+    {
+        "id": 37,
+        "marca": "Asics",
+        "modelo": "Running Ninbus",
+        "precio": 26440,
+        "cantidad": 1,
+        "imagen": "img/asics7.jpg"
+    },
+    {
+        "id": 38,
+        "marca": "Asics",
+        "modelo": "Running Noosa Tri 14",
+        "precio": 47999,
+        "cantidad": 1,
+        "imagen": "img/asics8.jpg"
+    },
+    {
+        "id": 39,
+        "marca": "Asics",
+        "modelo": "Running Kayano",
+        "precio": 23499,
+        "cantidad": 1,
+        "imagen": "img/asics9.jpg"
+    },
+    {
+        "id": 40,
+        "marca": "Asics",
+        "modelo": "Running Ninbus Azul",
+        "precio": 32999,
+        "cantidad": 1,
+        "imagen": "img/asics10.jpg"
+    }
+]
