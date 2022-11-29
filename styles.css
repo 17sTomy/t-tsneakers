@@ -645,3 +645,14 @@ footer{
     border-radius: .5rem;
     background-color: var(--main-color1-t);
   }
+
+/*FORMULARIO DE CONTACTO*/
+
+#contact{
+    margin-top: 20px;
+}
+.ubicacion{
+    width: 100%;
+}
+
+
