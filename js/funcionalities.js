@@ -12,7 +12,6 @@ document.onclick = (e) => {
     if (e.target.matches(".fa-cart-shopping") || e.target.matches(".fa-heart")){
         $sidebar.classList.toggle("open-close-sidebar")
     }
-
     if (e.target.matches(".fa-x")){
         $sidebar.classList.remove("open-close-sidebar")
     }
