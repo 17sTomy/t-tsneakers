@@ -1,27 +1,28 @@
 let totalCompra = 0
+const PRODUCTOS = [],
+$productsSection = document.querySelector(".all-products"),
+$cartSection = document.querySelector(".cart"),
+$total = document.querySelector(".total"),
+$cartQuantity = document.querySelectorAll(".cartQuantity"),
+$filterBtn = Array.from(document.querySelectorAll(".filter-btn")),
+$buyBtn = document.querySelector(".buyBtn"),
+$vaciarBtn = document.querySelector(".emptyBtn")
+
 document.addEventListener("DOMContentLoaded", () => {
     getCart()
     showAllProducts()
 })
-const PRODUCTOS = [],
-    $productsSection = document.querySelector(".all-products"),
-    $cartSection = document.querySelector(".cart"),
-    $total = document.querySelector(".total"),
-    $cartQuantity = document.querySelectorAll(".cartQuantity"),
-    $filterBtn = Array.from(document.querySelectorAll(".filter-btn")),
-    $buyBtn = document.querySelector(".buyBtn"),
-    $vaciarBtn = document.querySelector(".emptyBtn")
 
 const showProducts = products => {
     $productsSection.innerHTML = ""
     PRODUCTOS.length = 0
     products.forEach(product => {
         PRODUCTOS.push(product)
-        const {id, marca, modelo, precio, cantidad, imagen} = product
+        const {id, marca, modelo, precio, imagen} = product
         $productsSection.innerHTML += `
         <div class="card">
                 <div class="card-img">
-                    <img src=${imagen} alt="">
+                    <img src=${imagen} alt="${marca} ${modelo}">
                 </div>
                 <div class="card-info">
                     <div class="name-container">
@@ -35,11 +36,10 @@ const showProducts = products => {
                 <button id="${id}" onClick="addToCartArray(${id})"  class="addToCartBtn icon-btn add-btn">
                     <div class="add-icon"></div>
                     <div class="btn-txt"><i class="fa-solid fa-cart-plus addToCartBtn"></i></div>
-                </button>
-                    
-            `
-        })
-    }
+                </button>        
+        `
+    })
+}
 
 async function showAllProducts(){
     const productosFetch = await fetch("productos.json")
@@ -88,7 +88,7 @@ const updateCart = () => {
         $cartSection.innerHTML += `
         <div class="cardInCart">
             <div class="container-img">
-                <img src=${imagen} alt="">
+                <img src=${imagen} alt="${marca} ${modelo}">
             </div>
             <div class="info">
                 <span class="nameInCart">${marca} ${modelo}</span>
@@ -109,11 +109,14 @@ const deleteProductFromCart = id => {
     updateCart()
 }
 
-
 const updateTotal = e => {
     if(e){
         let id = parseInt(e.target.id),
             quantity = parseInt(e.target.value)
+        if (quantity > 5){
+            quantity = 5
+            e.target.value = 5
+        }
         CARRITO.forEach(product => {
             if (product.id === id) {
                 product.cantidad = quantity 
@@ -151,7 +154,7 @@ function getCart(){
 
 $buyBtn.onclick = () => {
     if (CARRITO.length > 0){
-        throwAlert("Tu compra ha sido realizada!", "Gracias por confiar en nosotros.", "success")
+        throwAlert(`Tu compra de $${totalCompra} ha sido realizada!`, "Gracias por confiar en nosotros.", "success")
         totalCompra = 0
         CARRITO = []
         IDS = []
