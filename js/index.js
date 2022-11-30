@@ -1,13 +1,13 @@
 // VARIABLES Y CONSTANTES
 let totalCompra = 0
 const PRODUCTOS = [],
-$productsSection = document.querySelector(".all-products"),
-$cartSection = document.querySelector(".cart"),
-$total = document.querySelector(".total"),
-$cartQuantity = document.querySelectorAll(".cartQuantity"),
-$filterBtn = Array.from(document.querySelectorAll(".filter-btn")),
-$buyBtn = document.querySelector(".buyBtn"),
-$vaciarBtn = document.querySelector(".emptyBtn")
+    $productsSection = document.querySelector(".all-products"),
+    $cartSection = document.querySelector(".cart"),
+    $total = document.querySelector(".total"),
+    $cartQuantity = document.querySelectorAll(".cartQuantity"),
+    $filterBtn = Array.from(document.querySelectorAll(".filter-btn")),
+    $buyBtn = document.querySelector(".buyBtn"),
+    $vaciarBtn = document.querySelector(".emptyBtn")
 
 document.addEventListener("DOMContentLoaded", () => {
     getCart()
