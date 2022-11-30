@@ -107,6 +107,11 @@ const deleteProductFromCart = id => {
     CARRITO.splice(index, 1)
     updateTotal()
     updateCart()
+    PRODUCTOS.forEach(product => {
+        if(product.id === parseInt(id)){
+            product.cantidad = 1
+        }
+    })
 }
 
 const updateTotal = e => {
