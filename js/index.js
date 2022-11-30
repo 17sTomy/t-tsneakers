@@ -136,14 +136,10 @@ const updateTotal = e => {
         CARRITO.forEach(product => product.id === id ? product.cantidad = quantity : e.target.value = quantity)
     }
     totalCompra = 0
-    CARRITO.forEach(product => {
-        totalCompra += product.precio * product.cantidad
-    })
+    CARRITO.forEach(product => totalCompra += product.precio * product.cantidad)
     $total.textContent = `Total: $${totalCompra}` 
     saveProductsAndPrice()
-    $cartQuantity.forEach(span => {
-        span.textContent = CARRITO.length !== 0 ? CARRITO.map(producto => producto.cantidad).reduce((a, b) => a + b) : "0"
-    })
+    $cartQuantity.forEach(span => span.textContent = CARRITO.length !== 0 ? CARRITO.map(producto => producto.cantidad).reduce((a, b) => a + b) : "0")
 }
 
 const saveProductsAndPrice = () => {
