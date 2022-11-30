@@ -5,7 +5,7 @@ Proyecto final del curso de JavaScript de Coderhouse. Se trata de un simulador d
 ![](img/portada.png)
 
 ## Deploy
-[Visualiza el proyecto tocando este link (GitHub).](https://17stomy.github.io/t-tsneakers/)
+[Visualiza el proyecto tocando este link.](https://17stomy.github.io/t-tsneakers/)
 
 ## Autor
 Tomás Alvarez
